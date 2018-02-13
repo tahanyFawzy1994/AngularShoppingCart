@@ -3,24 +3,42 @@ import { Product } from "./product";
 import { ProductService } from "./product.service";
 
 @Component({
-    selector : 'products',
-    templateUrl : 'product-list.component.html',
-    styleUrls : ['product-list.component.css'],
-    providers : [ProductService]
+    selector: 'products',
+    templateUrl: 'product-list.component.html',
+    styleUrls: ['product-list.component.css'],
+    providers: [ProductService]
 })
-export class ProductComponent implements OnInit{
+export class ProductComponent implements OnInit {
 
-    private productsList : Array<Product>;
-    private productService : ProductService;
-    private listFilter : string ;
+    private productsList: Array<Product>;
+    private productService: ProductService;
+    private listFilter: string;
+    private shoppingCart: Array<number>;
+    private totalPrice: number = 0;
 
-    constructor(productService :ProductService){
+    constructor(productService: ProductService) {
         this.productService = productService;
     }
 
     ngOnInit(): void {
-        this.productsList = this.productService.getAllProducts();
+        //this.productsList = this.productService.getAllProducts();
+        this.productService.getAllProducts()
+            .subscribe(productsList => this.productsList = productsList);
+        this.shoppingCart = [];
     }
 
+    private updateCart(id: number) {
+        var index = this.shoppingCart.indexOf(id);
+        if (index > -1) {
+            this.shoppingCart.splice(index, 1);
+        }
+        else {
+            this.shoppingCart.push(id);
+        }
+    }
 
+    private printCart() {
+        for (var i = 0; i < this.shoppingCart.length; i++)
+            console.log(this.shoppingCart[i]);
+    }
 }

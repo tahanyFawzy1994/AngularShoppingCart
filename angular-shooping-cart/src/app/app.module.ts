@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from './product/product.service';
 import { ProductFilterPipe } from './product/ProductFilter.pipe';
 import { StarComponent } from './shared/star.component';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { StarComponent } from './shared/star.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
