@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Product } from "./product";
 import { ProductService } from "./product.service";
+import { ShoppingService } from "./shoppingCart.service";
 
 @Component({
     selector: 'products',
@@ -14,9 +15,10 @@ export class ProductComponent implements OnInit {
     private productService: ProductService;
     private listFilter: string;
     private shoppingCart: Array<number>;
-    private totalPrice: number = 0;
+    private totalPrice: number;
 
-    constructor(productService: ProductService) {
+    constructor(productService: ProductService ,
+    private shoppingService : ShoppingService) {
         this.productService = productService;
     }
 
@@ -25,27 +27,33 @@ export class ProductComponent implements OnInit {
         this.productService.getAllProducts()
             .subscribe(productsList => this.productsList = productsList
                 , err => console.error(err));
-        this.shoppingCart = [];
+        this.shoppingService.currentcart.subscribe(data => this.shoppingCart = data);
+        this.shoppingService.currentPrice.subscribe(data=>this.totalPrice =data);
     }
 
     private updateCart(id: number) {
         var index = this.shoppingCart.indexOf(id);
         if (index > -1) {
             this.shoppingCart.splice(index, 1);
+            this.shoppingService.changeCart(this.shoppingCart);
             this.productService.getProductById(id)
             .subscribe(product => {
                 this.totalPrice -= product.price;
+                this.shoppingService.changePrice(this.totalPrice);
             },
                 err => console.error(err));
         }
         else {
             this.shoppingCart.push(id);
+            this.shoppingService.changeCart(this.shoppingCart);
             this.productService.getProductById(id)
             .subscribe(product => {
                 this.totalPrice += product.price;
+                this.shoppingService.changePrice(this.totalPrice);
             },
                 err => console.error(err));
         }
+        this.printCart();
     }
 
     private printCart() {

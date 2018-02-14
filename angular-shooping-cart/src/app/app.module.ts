@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './home/welcome.component';
 import { ProductDetailsComponent } from './product/productDetails/product-details.component';
 import { ProductModule } from './product/products.module';
+import { ShoppingService } from './product/shoppingCart.service';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { ProductModule } from './product/products.module';
     AppRoutingModule,
     ProductModule
   ],
-  providers: [],
+  providers: [ShoppingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

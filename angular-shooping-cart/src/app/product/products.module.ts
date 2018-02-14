@@ -11,20 +11,20 @@ import { RouterModule } from "@angular/router";
 import { HttpModule } from "@angular/http";
 
 @NgModule({
-    declarations :[
+    declarations: [
         ProductDetailsComponent,
         ProductComponent,
         ProductFilterPipe
     ],
-    imports :[
+    imports: [
         FormsModule,
         CommonModule,
         RouterModule,
         HttpModule,
         SharedModule
     ],
-    exports :[],
-    providers:[ProductService]
+    exports: [],
+    providers: [ProductService]
 })
 
-export class ProductModule{}
+export class ProductModule { }

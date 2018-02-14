@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Product } from "../product";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ProductService } from "../product.service";
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'product-details',
@@ -9,11 +10,12 @@ import { ProductService } from "../product.service";
 })
 export class ProductDetailsComponent implements OnInit {
 
-    product: Product;
+    private product: Product;
 
     constructor(private routeObj: ActivatedRoute,
         private productService: ProductService,
-        private router: Router) { }
+        private router: Router,
+        private location: Location) { }
 
     ngOnInit(): void {
         let id = this.routeObj.snapshot.params['id'];
@@ -24,6 +26,7 @@ export class ProductDetailsComponent implements OnInit {
     }
 
     onBack() {
-        this.router.navigate(['/products']);
+        //this.router.navigate(['/products']);
+        this.location.back();
     }
 }
