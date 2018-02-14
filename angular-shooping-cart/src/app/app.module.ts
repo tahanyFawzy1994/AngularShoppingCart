@@ -11,25 +11,20 @@ import { AppRoutingModule } from './shared/routing.module';
 import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './home/welcome.component';
 import { ProductDetailsComponent } from './product/productDetails/product-details.component';
+import { ProductModule } from './product/products.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent,
-    ProductFilterPipe,
-    StarComponent,
-    WelcomeComponent,
-    ProductDetailsComponent
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ProductModule
   ],
-  providers: [ProductService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

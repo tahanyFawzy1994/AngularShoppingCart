@@ -13,7 +13,7 @@ export class ProductDetailsComponent implements OnInit {
 
     constructor(private routeObj: ActivatedRoute,
         private productService: ProductService,
-        private router: Router) {}
+        private router: Router) { }
 
     ngOnInit(): void {
         let id = this.routeObj.snapshot.params['id'];
@@ -21,7 +21,6 @@ export class ProductDetailsComponent implements OnInit {
         //use observable if the id will change in the same page
         this.productService.getProductById(id)
             .subscribe(data => this.product = data);
-
     }
 
     onBack() {
