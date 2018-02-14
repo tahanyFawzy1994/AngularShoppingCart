@@ -23,7 +23,8 @@ export class ProductComponent implements OnInit {
     ngOnInit(): void {
         //this.productsList = this.productService.getAllProducts();
         this.productService.getAllProducts()
-            .subscribe(productsList => this.productsList = productsList);
+            .subscribe(productsList => this.productsList = productsList
+                , err => console.error(err));
         this.shoppingCart = [];
     }
 
@@ -31,9 +32,19 @@ export class ProductComponent implements OnInit {
         var index = this.shoppingCart.indexOf(id);
         if (index > -1) {
             this.shoppingCart.splice(index, 1);
+            this.productService.getProductById(id)
+            .subscribe(product => {
+                this.totalPrice -= product.price;
+            },
+                err => console.error(err));
         }
         else {
             this.shoppingCart.push(id);
+            this.productService.getProductById(id)
+            .subscribe(product => {
+                this.totalPrice += product.price;
+            },
+                err => console.error(err));
         }
     }
 

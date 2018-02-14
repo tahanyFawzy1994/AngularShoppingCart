@@ -2,52 +2,52 @@
     <div class="panel-heading">
         All Products
     </div>
-</div>
-<div class="panel-body">
-    <div class="row">
-        <div class="col-md-2">Search : </div>
-        <div class="col-md-4">
-            <input type="text" [(ngModel)]='listFilter' />
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">Search : </div>
+            <div class="col-md-4">
+                <input type="text" [(ngModel)]='listFilter' />
+            </div>
+            <div class="col-md-4">Filtered by: {{listFilter}}</div>
         </div>
-        <div class="col-md-4">Filtered by: {{listFilter}}</div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            Total Price is {{totalPrice}}
+        <div class="row">
+            <div class="col-md-6">
+                Total Price is {{totalPrice | currency:'USD':true:'1.3-3'}}
+            </div>
         </div>
-    </div>
-    <div class="table-responsive">
-        <table class="table" *ngIf='productsList && productsList.length'>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th>Product</th>
-                    <th>Code</th>
-                    <th>Available</th>
-                    <th>Price</th>
-                    <th>Star Rating</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor='let product of productsList | productfilter : listFilter , 
+        <div class="table-responsive">
+            <table class="table" *ngIf='productsList && productsList.length'>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Product</th>
+                        <th>Code</th>
+                        <th>Available</th>
+                        <th>Price</th>
+                        <th>Star Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let product of productsList | productfilter : listFilter , 
                                 let i = index' [ngClass]="{info : true ?shoppingCart.indexOf(product.productId)>-1 : false}">
-                    <td>
-                        <input type="checkbox" [checked]="true ?shoppingCart.indexOf(product.productId)>-1 : false" (change)="updateCart(product.productId)"
-                        />
-                    </td>
-                    <td>
-                        <img [src]='product.imageUrl' [style.width.px]='imageSize' />
-                    </td>
-                    <td>{{product.productName}}</td>
-                    <td>{{product.productCode |lowercase}}</td>
-                    <td>{{product.releaseDate}}</td>
-                    <td>{{product.price | currency:'USD':true:'1.3-3'}}</td>
-                    <td>
-                        <star [rating]='product.starRating'></star>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        <td>
+                            <input type="checkbox" [checked]="true ?shoppingCart.indexOf(product.productId)>-1 : false" (change)="updateCart(product.productId)"
+                            />
+                        </td>
+                        <td>
+                            <img [src]='product.imageUrl' [style.width.px]='imageSize' />
+                        </td>
+                        <td>{{product.productName}}</td>
+                        <td>{{product.productCode |lowercase}}</td>
+                        <td>{{product.releaseDate}}</td>
+                        <td>{{product.price | currency:'USD':true:'1.3-3'}}</td>
+                        <td>
+                            <star [rating]='product.starRating'></star>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
