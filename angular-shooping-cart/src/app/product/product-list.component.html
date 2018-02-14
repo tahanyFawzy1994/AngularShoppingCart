@@ -38,7 +38,7 @@
                         <td>
                             <img [src]='product.imageUrl' [style.width.px]='imageSize' />
                         </td>
-                        <td>{{product.productName}}</td>
+                        <td><a [routerLink] = "['/product', product.productId]">{{product.productName}}</a></td>
                         <td>{{product.productCode |lowercase}}</td>
                         <td>{{product.releaseDate}}</td>
                         <td>{{product.price | currency:'USD':true:'1.3-3'}}</td>
