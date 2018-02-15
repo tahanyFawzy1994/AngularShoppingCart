@@ -13,12 +13,14 @@ import { WelcomeComponent } from './home/welcome.component';
 import { ProductDetailsComponent } from './product/productDetails/product-details.component';
 import { ProductModule } from './product/products.module';
 import { ShoppingService } from './product/shoppingCart.service';
+import { ShoppingCartComponent } from './shoppingCart/shoppingCart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

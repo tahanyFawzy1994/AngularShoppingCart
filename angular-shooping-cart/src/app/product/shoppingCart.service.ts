@@ -16,6 +16,10 @@ export class ShoppingService {
     }
 
     public changeCart(newCart: Array<number>) {
+    //     console.log("service cart");
+    //  for(let i = 0 ; i < newCart.length ;i++){
+    //     console.log(newCart[i]);
+    // }
         this.cart.next(newCart);
     }
 }

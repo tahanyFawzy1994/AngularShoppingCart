@@ -17,8 +17,8 @@ export class ProductComponent implements OnInit {
     private shoppingCart: Array<number>;
     private totalPrice: number;
 
-    constructor(productService: ProductService ,
-    private shoppingService : ShoppingService) {
+    constructor(productService: ProductService,
+        private shoppingService: ShoppingService) {
         this.productService = productService;
     }
 
@@ -28,7 +28,8 @@ export class ProductComponent implements OnInit {
             .subscribe(productsList => this.productsList = productsList
                 , err => console.error(err));
         this.shoppingService.currentcart.subscribe(data => this.shoppingCart = data);
-        this.shoppingService.currentPrice.subscribe(data=>this.totalPrice =data);
+        this.shoppingService.currentPrice.subscribe(data => this.totalPrice = data);
+        this.printCart();
     }
 
     private updateCart(id: number) {
@@ -37,23 +38,23 @@ export class ProductComponent implements OnInit {
             this.shoppingCart.splice(index, 1);
             this.shoppingService.changeCart(this.shoppingCart);
             this.productService.getProductById(id)
-            .subscribe(product => {
-                this.totalPrice -= product.price;
-                this.shoppingService.changePrice(this.totalPrice);
-            },
-                err => console.error(err));
+                .subscribe(product => {
+                    this.totalPrice -= product.price;
+                    this.shoppingService.changePrice(this.totalPrice);
+                },
+                    err => console.error(err));
         }
         else {
             this.shoppingCart.push(id);
             this.shoppingService.changeCart(this.shoppingCart);
             this.productService.getProductById(id)
-            .subscribe(product => {
-                this.totalPrice += product.price;
-                this.shoppingService.changePrice(this.totalPrice);
-            },
-                err => console.error(err));
+                .subscribe(product => {
+                    this.totalPrice += product.price;
+                    this.shoppingService.changePrice(this.totalPrice);
+                },
+                    err => console.error(err));
         }
-        this.printCart();
+        //this.printCart();
     }
 
     private printCart() {

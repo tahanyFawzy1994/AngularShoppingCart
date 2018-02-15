@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.shoppingService.currentPrice.subscribe(data => this.totalPrice = data);
   }
-  
+
   pageTitle: string = "Home Page";
   totalPrice: number = 0;
 
