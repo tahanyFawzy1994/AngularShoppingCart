@@ -5,12 +5,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'npm install'
+              sh 'cd angular-shooping-cart'  
+              sh 'npm install'
             }
         }
         stage('Run') {
             steps {
                 echo 'Running...'
+              sh 'cd angular-shooping-cart'
                 sh 'npm start'
             }
         }
