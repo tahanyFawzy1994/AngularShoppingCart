@@ -2,17 +2,21 @@ pipeline {
 
     agent any
     stages {
+      stage('move'){
+      steps {
+                echo 'Moving...'
+              bat 'cd angular-shooping-cart'
+            }
+      }
         stage('Build') {
             steps {
                 echo 'Building...'
-              bat 'cd angular-shooping-cart'  
               bat 'npm install'
             }
         }
         stage('Run') {
             steps {
                 echo 'Running...'
-              bat 'cd angular-shooping-cart'
                 bat 'npm start'
             }
         }
