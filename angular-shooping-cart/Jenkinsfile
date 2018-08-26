@@ -10,12 +10,5 @@ pipeline {
                 bat 'npm install'
             }
         }
-        stage('Run') {
-            steps {
-                echo 'Running...'
-                dir 'angular-shooping-cart'
-                bat 'npm start'
-            }
-        }
     }
 }
