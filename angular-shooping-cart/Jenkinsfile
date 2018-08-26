@@ -3,6 +3,11 @@ pipeline {
     agent any
     tools {nodejs "node"}
     stages {
+      stage ('Move to'){
+        steps{
+        dir 'angular-shooping-cart'
+        }
+      }
         stage('Build') {
             steps {
                 echo 'Building...'
@@ -12,7 +17,6 @@ pipeline {
           stage('Run') {
             steps {
                 echo 'Running...'
-				 dir 'angular-shooping-cart'
                 bat 'npm start'
             }
         
