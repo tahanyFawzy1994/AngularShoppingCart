@@ -11,11 +11,11 @@ import { ShoppingService } from "./shoppingCart.service";
 })
 export class ProductComponent implements OnInit {
 
-    private productsList: Array<Product>;
-    private productService: ProductService;
-    private listFilter: string;
-    private shoppingCart: Array<number>;
-    private totalPrice: number;
+    public productsList: Array<Product>;
+    public productService: ProductService;
+    public listFilter: string;
+    public shoppingCart: Array<number>;
+    public totalPrice: number;
 
     constructor(productService: ProductService,
         private shoppingService: ShoppingService) {
