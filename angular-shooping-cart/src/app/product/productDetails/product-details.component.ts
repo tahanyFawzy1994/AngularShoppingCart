@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
 })
 export class ProductDetailsComponent implements OnInit {
 
-    private product: Product;
+    public product: Product;
 
     constructor(private routeObj: ActivatedRoute,
         private productService: ProductService,
