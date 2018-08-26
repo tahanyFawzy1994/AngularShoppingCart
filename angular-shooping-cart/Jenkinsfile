@@ -6,7 +6,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                dir 'angular-shooping-cart'
                 bat 'npm install'
             }
         }
