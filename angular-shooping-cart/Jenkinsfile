@@ -13,7 +13,7 @@ pipeline {
                 echo 'Running...'
                 bat 'npm start'
             }
-        }
+        
         }
     }
 }
