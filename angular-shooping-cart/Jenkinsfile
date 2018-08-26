@@ -7,12 +7,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'npm install'
+                bat 'npm install'
             }
 		}
           stage('Run') {
             steps {
                 echo 'Running...'
+              dir 'angular-shooping-cart'
                 bat 'npm start'
             }
         
