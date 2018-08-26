@@ -3,12 +3,19 @@ pipeline {
     agent any
     tools {nodejs "node"}
     stages {
-      
+      stage('install'){
+        steps {
+                echo 'Installing...'
+              dir ('angular-shooping-cart'){
+                bat 'npm install'
+              }
+            }
+      }
         stage('Build') {
             steps {
                 echo 'Building...'
               dir ('angular-shooping-cart'){
-                bat 'npm install'
+                bat 'ng build --prod'
               }
             }
 		}
@@ -16,7 +23,7 @@ pipeline {
             steps {
                 echo 'Running...'
               dir ('angular-shooping-cart'){
-                bat 'npm start'
+                bat 'ng serve'
               }
             }
         
