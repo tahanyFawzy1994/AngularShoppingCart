@@ -10,8 +10,8 @@ import { Location } from '@angular/common';
 
 export class ShoppingCartComponent implements OnInit {
 
-    private shoppingCart: Array<Product> = [];
-    private totalPrice: number;
+    public shoppingCart: Array<Product> = [];
+    public totalPrice: number;
 
     constructor(private productService: ProductService,
         private shoppingService: ShoppingService,
