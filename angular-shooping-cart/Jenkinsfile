@@ -8,6 +8,7 @@ pipeline {
                 echo 'Building...'
                 bat 'npm install'
             }
+		}
           stage('Run') {
             steps {
                 echo 'Running...'
