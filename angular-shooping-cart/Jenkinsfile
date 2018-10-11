@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo 'Unit Testing ...'
               dir ('angular-shooping-cart'){
-                bat 'ng test --watch=false'
+                bat 'ng test --single-run=true --browser Firefox'
               }
             }
 		}
