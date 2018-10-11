@@ -27,11 +27,11 @@ pipeline {
               }
             }
 		}
-          stage('Run') {
+          stage('copy') {
             steps {
-                echo 'Running...'
+                echo 'coping...'
               dir ('angular-shooping-cart'){
-                
+                xcopy dist D:\Asset /E /C /H /R /K /O /Y
               }
             }
         
