@@ -1,9 +1,7 @@
 pipeline {
 
     agent any
-    triggers {
-        cron('H/15 * * * *')
-    }
+    
     tools {nodejs "node"}
     stages {
       stage('install'){
