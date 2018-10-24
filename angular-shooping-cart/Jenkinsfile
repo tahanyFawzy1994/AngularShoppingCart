@@ -5,6 +5,9 @@ pipeline {
     tools {nodejs "node"}
     stages {
       stage('install'){
+        when {
+                branch 'master'
+            }
         steps {
                 echo 'Installing...'
               dir ('angular-shooping-cart'){
@@ -13,6 +16,9 @@ pipeline {
             }
       }
       stage('test') {
+         when {
+                branch 'master'
+            }
             steps {
                 echo 'Unit Testing ...'
               dir ('angular-shooping-cart'){
@@ -21,6 +27,9 @@ pipeline {
             }
 		}
         stage('Build') {
+           when {
+                branch 'master'
+            }
             steps {
                 echo 'Building...'
               dir ('angular-shooping-cart'){
@@ -30,6 +39,9 @@ pipeline {
 		}
 		
           stage('copy') {
+             when {
+                branch 'master'
+            }
             steps {
                 echo 'coping...'
               dir ('angular-shooping-cart'){
